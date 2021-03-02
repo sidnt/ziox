@@ -1,7 +1,8 @@
-package zion
+package ziox
 
 import zio._
 import console._
 
-object ZMain extends App:
+object ZMain extends App{
   def run(args: List[String]) = putStrLn("Hi").exitCode
+}

@@ -98,3 +98,16 @@ object NagForInt_improved extends App {
   def run(args: List[String]): URIO[ZEnv,ExitCode] = nagForInt.exitCode
 
 }
+
+object NagForInt2 extends App {
+
+  val readInt: ZIO[Console, IOException, Int] = for {
+    intS  <-    putStr("enter an int> ") *> getStrLn
+    int   <-    Task(intS.toInt) orElse fallback(intS)
+  } yield int
+
+  def fallback(input: String) = putStr(s"$input is not a valid int. ") *> readInt
+
+  def run(args: List[String]): URIO[ZEnv,ExitCode] = readInt.exitCode
+
+}

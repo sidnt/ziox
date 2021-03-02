@@ -1,4 +1,4 @@
-package zion
+package ziox
 
 import zio._
 import console._
